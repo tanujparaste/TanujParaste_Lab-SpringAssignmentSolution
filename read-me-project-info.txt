@@ -1,0 +1,36 @@
+The project requires a database to store essential information.
+Make sure that the database is already created and available before running the application.
+
+Creating a database in MySQL:
+
+CREATE DATABASE IF NOT EXISTS student_tracker_db;
+
+Run the application, all required tables will be created in the database automatically.
+
+Since the application doesn't provided the feature to create Users and UserRoles, enter sample data
+in the respective tables so that the application can be used with various types of user and user roles.
+
+USE student_tracker_db;
+
+INSERT INTO users(username, password) VALUES('tanuj@user','pass');
+INSERT INTO users(username, password) VALUES('paraste@admin','pass');
+INSERT INTO users(username, password) VALUES('kumar@guest','pass');
+
+INSERT INTO roles(name) VALUES('USER');
+INSERT INTO roles(name) VALUES('ADMIN');
+INSERT INTO roles(name) VALUES('GUEST');
+
+INSERT INTO users_roles(user_id, role_id) VALUES(1,1);
+INSERT INTO users_roles(user_id, role_id) VALUES(2,2);
+INSERT INTO users_roles(user_id, role_id) VALUES(3,3);
+
+Now, the application can be run and tested with the users created above.
+
+Given below is the list of users and operations they can perform.
+
+tanuj@user -- view student list, add a student only
+paraste@admin -- all operations i.e. view student list, add, update and delete a student
+kumar@guest -- view student list only
+
+Expected behaviour: A user is forbidden to perform an action which is not listed above.
+
